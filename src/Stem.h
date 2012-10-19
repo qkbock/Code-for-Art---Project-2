@@ -1,35 +1,54 @@
 #pragma once
+#include "ofMain.h"
 
-#define STEM_LENGTH 50
+#define STEM_LENGTH 5
 
 class Stem {
 public:
     // -------------------------
     void initiate(){
-        width = 4;
         for(int i = 0; i < STEM_LENGTH; i++){
             stem[i].x = 0;
-            stem[i].y = i*3;
+            stem[i].y = -i*50;
         }
+        stemTranslation.x = ofGetWidth()/2;
+        stemTranslation.y = ofGetHeight();
+
     }
     
     // -------------------------
     void move(){
-      
+        for(int i = 0; i < STEM_LENGTH; i++){
+            stem[i].x += (i*10);
+        }
+    }
+    
+    // -------------------------
+    void straightenOut(){
+        
     }
     
     // -------------------------
     void display(){
-        for(int i = 0; i < STEM_LENGTH; i++){
-            ofSetColor(255);
-            ofPushMatrix();
-            ofTranslate(ofGetWidth()/2, ofGetHeight()-STEM_LENGTH*5);
-            ofCircle(stem[i], width);
-            ofPopMatrix();
-        }
+        ofSetColor(255);
+        ofSetLineWidth(5);
+        ofNoFill();
+        ofPushMatrix();
+            ofTranslate(stemTranslation);
+            ofBeginShape();
+            ofCurveVertex(stem[0]);
+            for(int i = 0; i< STEM_LENGTH; i++){
+                ofCurveVertex(stem[i]);
+            }
+            ofCurveVertex(stem[STEM_LENGTH-1]);
+            ofEndShape();
+        ofPopMatrix();
     }
     
     // -------------------------
     float width;
     ofPoint stem[STEM_LENGTH];
+    ofPoint stemTranslation;
+    float percentage;
+    float stemMove;
 };

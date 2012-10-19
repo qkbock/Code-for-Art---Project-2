@@ -440,7 +440,7 @@
 				);
 				PREBINDING = NO;
 				PRODUCT_NAME = classes04Debug;
-				SDKROOT = macosx10.6;
+				SDKROOT = macosx10.7;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -527,7 +527,7 @@
 				);
 				PREBINDING = NO;
 				PRODUCT_NAME = classes04;
-				SDKROOT = macosx10.6;
+				SDKROOT = macosx10.7;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
